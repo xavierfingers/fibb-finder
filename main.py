@@ -20,5 +20,8 @@ choice  = input("Enter choice: ")
 if choice == "fib":
  x = int(input("Enter number: "))
  print(fib(x)[0])
- v = fib(x)[0] == fib(x - 1)[0] + fib(x-2)[0] 
+if choice == "verify":
+ x = int(input("Enter number: "))
+ v = fib(x)[0] == fib(x - 1)[0] + fib(x-2)[0]
+ print(f"{"="*50}") 
  print("Verification: fib(n) = fib(n - 1) + fib(n - 2): ", v)
