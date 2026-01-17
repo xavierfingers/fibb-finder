@@ -1,7 +1,8 @@
-from numba import njit, objmode
+from functools import lru_cache
 import threading
 import time
 import sys
+@lru_cache(maxsize=None)
 def fib(n):
    if n == 0:
             return (0, 1)
@@ -15,5 +16,4 @@ def fib(n):
 sys.set_int_max_str_digits(10000000)
 print("Welcome to FibbFinder!")
 x = int(input("Enter number: "))
-s = time.perf_counter()
-show(x)
+print(fib(x)[0])
