@@ -1,3 +1,4 @@
+
 from functools import lru_cache
 import threading
 import time
@@ -15,5 +16,7 @@ def fib(n):
      return (c, d)
 sys.set_int_max_str_digits(10000000)
 print("Welcome to FibbFinder!")
-x = int(input("Enter number: "))
-print(fib(x)[0])
+choice  = input("Enter choice: ")
+if choice == "fib":
+ x = int(input("Enter number: "))
+ print(fib(x)[0])
