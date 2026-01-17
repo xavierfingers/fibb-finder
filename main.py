@@ -11,8 +11,9 @@ def fib(n):
      return (d, c + d)
    else:
     return (c, d)
-   print(f"Took {time.perf_counter() - s} seconds")
 sys.set_int_max_str_digits(10000000)
 print("Welcome to FibbFinder!")
 x = int(input("Enter number: "))
+s = time.perf_counter()
 print(f"The {x}th Fibonacci number is {fib(x)[0]}")
+print("Took: ", time.perf_counter() - s)
