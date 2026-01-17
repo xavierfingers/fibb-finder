@@ -1,5 +1,7 @@
+import time
 import sys
 def fib(n):
+   s = time.perf_counter()
    if n == 0:
             return (0, 1)
    a, b = fib(n >> 1)
@@ -9,6 +11,7 @@ def fib(n):
      return (d, c + d)
    else:
     return (c, d)
+   print(f"Took {time.perf_counter() - s} seconds")
 sys.set_int_max_str_digits(10000000)
 print("Welcome to FibbFinder!")
 x = int(input("Enter number: "))
