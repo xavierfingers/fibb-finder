@@ -1,3 +1,4 @@
+import threading
 import time
 import sys
 def fib(n):
@@ -11,9 +12,12 @@ def fib(n):
      return (d, c + d)
    else:
     return (c, d)
+def show(x):
+ x = threading.Thread(target=print(fib(x)[0]))
+ x.start()
 sys.set_int_max_str_digits(10000000)
 print("Welcome to FibbFinder!")
 x = int(input("Enter number: "))
 s = time.perf_counter()
-print(f"The {x}th Fibonacci number is {fib(x)[0]}")
+show(x)
 print("Took: ", time.perf_counter() - s)
