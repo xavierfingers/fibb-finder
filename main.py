@@ -23,5 +23,9 @@ if choice == "fib":
 if choice == "verify":
  x = int(input("Enter number: "))
  v = fib(x)[0] == fib(x - 1)[0] + fib(x-2)[0]
+ v1 = fib(x+1)[0]*fib(x-1)[0] - (fib(x)[0])**2 == (-1)**x 
+ v2 = sum([fib(s)[0] for s in range(0, x)]) == fib(x+1)[0] - 1
  print(f"{"="*50}") 
+ print("Verification: sum([fib(s) for s in range(0, x)]) == fib(x+1) - 1", v2)
  print("Verification: fib(n) = fib(n - 1) + fib(n - 2): ", v)
+ print("Verification: F(n+1)F(n-1) - F(n)^2 = (-1)^n: ", v1)
