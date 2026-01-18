@@ -1,10 +1,26 @@
 
 from functools import lru_cache
-import threading
-import time
+import os
 import sys
+import psutil
+import struct
+import mmap
 @lru_cache(maxsize=None)
+def setaff(cpus):
+     p = psutil.Process()
+     p.cpu_affinity(cpus)
+def write_memorymap(f, x, size=8192):
+ cache = os.open('cache.bin', os.O_RDWR)
+ mem = mmap.mmap(cache, size)
+ r = f(x)[0]
+ offset = (8*2)+(8 * 8)
+ if r < 10000:
+  mem[offset:offset+8] =  struct.pack('Q', r)
+  return struct.unpack('Q', mem[offset:offset+8])[0]
+ return r
 def fib(n):
+   cpus = range(os.cpu_count())
+   setaff(cpus)
    if n == 0:
             return (0, 1)
    a, b = fib(n >> 1)
@@ -19,7 +35,7 @@ print("Welcome to FibbFinder!")
 choice  = input("Enter choice: ")
 if choice == "fib":
  x = int(input("Enter number: "))
- print(fib(x)[0])
+ print(write_memorymap(fib, x))
 if choice == "verify":
  x = int(input("Enter number: "))
  v = fib(x)[0] == fib(x - 1)[0] + fib(x-2)[0]
