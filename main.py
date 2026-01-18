@@ -3,20 +3,10 @@ from functools import lru_cache
 import os
 import sys
 import psutil
-import struct
-import mmap
 @lru_cache(maxsize=None)
 def setaff(cpus):
      p = psutil.Process()
      p.cpu_affinity(cpus)
-def write_memorymap(f, x, size=8192):
- cache = os.open('cache.bin', os.O_RDWR)
- mem = mmap.mmap(cache, size)
- r = f(x)[0]
- offset = (8*2)+(8 * 8)
- if r < 10000:
-  mem[offset:offset+8] =  struct.pack('Q', r)
-  return struct.unpack('Q', mem[offset:offset+8])[0]
  return r
 def fib(n):
    cpus = range(os.cpu_count())
