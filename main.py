@@ -27,5 +27,5 @@ if choice == "verify":
  v2 = sum([fib(s)[0] for s in range(0, x)]) == fib(x+1)[0] - 1
  print(f"{"="*50}") 
  print("Verification: sum([fib(s) for s in range(0, x)]) == fib(x+1) - 1", v2)
- print("Verification: fib(n) = fib(n - 1) + fib(n - 2): ", v)
- print("Verification: F(n+1)F(n-1) - F(n)^2 = (-1)^n: ", v1)
+ print("Verification: fib(n) = fib(n - 1) + fib(n - 2): " + "✅ " + str(v))
+ print("Verification: F(n+1)F(n-1) - F(n)^2 = (-1)^n: " + str(v1) + " ✅")
