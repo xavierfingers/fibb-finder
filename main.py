@@ -24,7 +24,7 @@ print("Welcome to FibbFinder!")
 choice  = input("Enter choice: ")
 if choice == "fib":
  x = int(input("Enter number: "))
- print(write_memorymap(fib, x))
+ print(fib(x)[0])
 if choice == "verify":
  x = int(input("Enter number: "))
  v = fib(x)[0] == fib(x - 1)[0] + fib(x-2)[0]
