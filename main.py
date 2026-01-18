@@ -7,7 +7,6 @@ import psutil
 def setaff(cpus):
      p = psutil.Process()
      p.cpu_affinity(cpus)
- return r
 def fib(n):
    cpus = range(os.cpu_count())
    setaff(cpus)
